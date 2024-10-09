@@ -1,0 +1,9 @@
+<?php require 'templates/layout/header.phtml'; ?>
+
+    <h1><?= $producto->nombre_producto ?></h1>
+    <p>Precio: $<?= $producto->precio ?></p>
+    <p>Stock: <?= $producto->stock ?></p>
+    <p><b>Categoría:</b> <?= $producto->ID_categoria?></p>
+    <a href="lista_productos">Volver a la lista</a>
+
+<?php require'templates/layout/footer.phtml';

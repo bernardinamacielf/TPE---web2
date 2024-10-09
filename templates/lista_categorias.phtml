@@ -1,0 +1,26 @@
+<?php require 'templates/layout/header.phtml'; ?>
+
+<h1>Lista de Categorías</h1>
+    <ul class="list-group">
+        <?php foreach ($categorias as $categoria) { ?>  
+            <li class="list-group-item item-categoria <?php if($categoria->suspendida): ?> suspender <?php endif ?>"> 
+                <div class="label">
+                    <b><?= htmlspecialchars($categoria->nombre_categoria )?></b> | <a href="mostrar_item/<?= $categoria->ID_categoria ?>">Ver Productos</a>
+                </div> 
+            </li>
+        <?php } ?>     
+    </ul> 
+
+<?php require 'templates/layout/footer.phtml'; 
+
+
+
+
+
+
+
+    
+       
+        
+               
+        

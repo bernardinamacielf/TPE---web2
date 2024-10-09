@@ -1,0 +1,37 @@
+
+<form action="agregar_producto" method="POST" class="my-4">
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Producto</label>
+                <input required name="nombre_producto" type="text" class="form-control">
+
+                <label>Precio</label>
+                <input required name="precio" type="text" class="form-control">
+
+                <label>Stock</label>
+                <input required name="stock" type="text" class="form-control">
+
+                <label>Subir una foto del producto (URL)</label>
+                <input required name="foto_url" type="url" class="form-control"> <!-- podria agregarse placeholder, preguntar si puede ser sin required -->
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label>Categoría</label>
+                <select required name="categoria" class="form-control">
+                    <option value="1">Indumentaria</option>
+                    <option value="2">Electrodomésticos</option>
+                    <option value="3">Decoración</option>
+                    <?php foreach($categorias as $categoria): ?>
+                        <option value="<?= htmlspecialchars($categoria->ID_categoria )?>"><?= htmlspecialchars($categoria->nombre_categoria) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+</form>
+
