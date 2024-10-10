@@ -1,23 +1,11 @@
 <?php require 'templates/layout/header.phtml'; ?>
-<?php require 'templates/formulario_agregar_producto.phtml'; ?>
 
 <h1>Lista de todos los Productos</h1>
     <ul class="list-group">
         <?php foreach ($productos as $producto) { ?>  
             <li class="list-group-item item-producto <?php if($producto->sin_stock): ?> sin_stock <?php endif ?>">
                 <div class="label">
-                    <b><?= htmlspecialchars($producto->nombre_producto) ?></b> | Categoria <?= $producto->ID_categoria ?> | <a href="producto/<?= $producto->ID_producto ?>">Ver Detalle</a>
-                </div>
-                <?php if($producto->foto_url): ?>
-                    <img src="<?= htmlspecialchars($producto->foto_url) ?>" class="img-thumbnail" style="max-width: 150px;">
-                <?php endif ?>
-                <div class="actions">
-                    <?php if(!$producto->sin_stock): ?>
-                        <a href="editar_producto/<?= $producto->ID_producto ?>" type="button" class='btn btn-success btn-sm ml-auto'>Sin Stock</a>
-                    <?php else: ?>
-                        <span class="btn btn-secondary btn-sm ml-auto" disabled>Sin Stock</span> 
-                    <?php endif ?>
-                    <a href="eliminar_producto/<?= $producto->ID_producto ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Eliminar</a>
+                    <b><?= htmlspecialchars($producto->nombre_producto) ?></b> | Categoria <?= $producto->nombre_categoria ?> | <a href="producto/<?= $producto->ID_producto ?>">Ver Detalle</a>
                 </div>
             </li>
         <?php } ?>

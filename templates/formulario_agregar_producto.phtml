@@ -19,11 +19,9 @@
 
         <div class="col-3">
             <div class="form-group">
-                <label>Categoría</label>
+                <label>Seleccione una Categoría</label>
                 <select required name="categoria" class="form-control">
-                    <option value="1">Indumentaria</option>
-                    <option value="2">Electrodomésticos</option>
-                    <option value="3">Decoración</option>
+                    <option value=""></option>
                     <?php foreach($categorias as $categoria): ?>
                         <option value="<?= htmlspecialchars($categoria->ID_categoria )?>"><?= htmlspecialchars($categoria->nombre_categoria) ?></option>
                     <?php endforeach; ?>

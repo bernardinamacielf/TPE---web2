@@ -30,7 +30,7 @@ class adminControlador {
         $nombre_categoria = $_POST['nombre_categoria'];
 
         $ID_categoria = $this->modelo->insertarCategoria($nombre_categoria);
-        header('Location: ' . BASE_URL . 'admin_lista_categorias');
+        header('Location: ' . BASE_URL . 'admin_categoria');
     }
 
     public function eliminarCategoria($ID_categoria) {

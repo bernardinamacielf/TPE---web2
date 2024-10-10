@@ -6,6 +6,7 @@ require_once 'app/controladores/categorias.controlador.php';
 require_once 'app/controladores/productos.controlador.php';
 require_once 'app/controladores/autenticacion.controlador.php';
 require_once 'app/controladores/admin.categoria.controlador.php';
+require_once 'app/controladores/admin.producto.controlador.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -50,19 +51,23 @@ switch ($params[0]) {
         $controlador = new autenticacionControlador();
         $controlador->cerrarSesion();
         break;   
+    case 'admin_producto':
+        sesionAutenticacionMiddleware($res);
+        $controlador = new adminProductoControlador();
+        $controlador->mostrarProductos();  
     case 'agregar_producto':
         sesionAutenticacionMiddleware($res);
-        $controlador = new productosControlador();
+        $controlador = new adminProductoControlador();
         $controlador->agregarProducto();
         break;
     case 'eliminar_producto':
         sesionAutenticacionMiddleware($res);
-        $controlador = new productosControlador();
+        $controlador = new adminProductoControlador();
         $controlador->eliminarProducto($params[1]);
         break;
     case 'editar_producto':
         sesionAutenticacionMiddleware($res);
-        $controlador = new productosControlador();
+        $controlador = new adminProductoControlador();
         $controlador->editarProducto($params[1]);
         break;
     case 'admin_categoria':
