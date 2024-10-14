@@ -9,16 +9,16 @@ class adminProductoControlador {
     private $vista;
     private $adminCategoriaModelo;
 
-    public function __construct() {
+    public function __construct($res) {
         $this->modelo = new adminProductoModelo();
-        $this->vista = new adminProductoVista();
+        $this->vista = new adminProductoVista($res->usuario);
         $this->adminCategoriaModelo = new adminModelo();
     }
 
     public function mostrarProductos() {
         $productos = $this->modelo->obtenerProductos();
-        $categorias = $this->adminCategoriaModelo->obtenerCategorias(); //obtengo las categorias actualizadas
-        return $this->vista->adminListarProductos($productos, $categorias); //las mando a la vista donde incluyo el template que tiene el formulario
+        $categorias = $this->adminCategoriaModelo->obtenerCategorias(); 
+        return $this->vista->adminListarProductos($productos, $categorias); 
     }
 
     public function productoDetalle($ID_producto) {

@@ -6,7 +6,6 @@ require_once 'app/vistas/productos.vista.php';
 class productosControlador {
     private $modelo;
     private $vista;
-    //private $categoriasModelo;
 
     public function __construct() {
         $this->modelo = new productosModelo();

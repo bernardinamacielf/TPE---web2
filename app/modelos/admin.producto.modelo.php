@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 
 class adminProductoModelo {
     private $db;
@@ -50,4 +50,4 @@ class adminProductoModelo {
         $query->execute([$ID_producto]);
     }
 
-}
+} 

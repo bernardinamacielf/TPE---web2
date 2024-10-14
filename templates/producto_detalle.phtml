@@ -1,9 +1,13 @@
-<?php require 'templates/layout/header.phtml'; ?>
 
-    <h1><?= $producto->nombre_producto ?></h1>
-    <p>Precio: $<?= $producto->precio ?></p>
-    <p>Stock: <?= $producto->stock ?></p>
-    <p><b>Categoría:</b> <?= $producto->nombre_categoria?></p>
+<h1><?= $producto->nombre_producto ?></h1>
+<p>Precio: $<?= $producto->precio ?></p>
+<p>Stock: <?= $producto->stock ?></p>
+<p><b>Categoría:</b> <?= $producto->nombre_categoria?></p>
+
+<?php if(!$usuario): ?>
     <a href="lista_productos">Volver a la lista</a>
+<?php else: ?>
+    <a href="admin_producto">Volver a la lista</a>
+<?php endif; ?>
 
-<?php require'templates/layout/footer.phtml';
+<?php require'templates/layout/footer.phtml'; ?>

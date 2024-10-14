@@ -8,7 +8,6 @@ function sesionAutenticacionMiddleware($res) {
         $res->usuario->nombre =  $_SESSION['nombre'];
         return;
     } else {
-        header('Location: ' . BASE_URL . 'mostrarLogin');
-        die();
+        $res->usuario = null;
     }
 }

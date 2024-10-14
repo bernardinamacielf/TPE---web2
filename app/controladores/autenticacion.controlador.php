@@ -13,7 +13,6 @@ class autenticacionControlador {
     }
 
     public function mostrarLogin() {
-        //muestra el formulario de login
         return $this->vista->mostrarLogin();
     }
 
@@ -41,7 +40,7 @@ class autenticacionControlador {
             $_SESSION['ID_usuario'] = $usuarioDB->ID_usuario;
             $_SESSION['nombre'] = $usuarioDB->nombre;
 
-            header('Location: ' . BASE_URL . 'lista_productos'); //ver bien a donde redirigir despues de iniciar sesion
+            header('Location: ' . BASE_URL . 'admin_producto'); 
         } else {
             return $this->vista->mostrarLogin('Credenciales incorrectas');
         }

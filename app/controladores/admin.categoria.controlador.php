@@ -7,9 +7,9 @@ class adminControlador {
     private $modelo;
     private $vista;
 
-    public function __construct() {
+    public function __construct($res) {
         $this->modelo = new adminModelo();
-        $this->vista = new adminVista();
+        $this->vista = new adminVista($res->usuario);
     }
 
     public function mostrarCategorias() {
