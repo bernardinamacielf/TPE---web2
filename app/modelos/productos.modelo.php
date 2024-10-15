@@ -1,10 +1,27 @@
 <?php 
 
+require_once 'config/config.php';
+
 class productosModelo {
     private $db;
 
     public function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=ventas;charset=utf8', 'root', '');
+        $this->db = new PDO(
+        "mysql:host=".MYSQL_HOST .
+        ";dbname=".MYSQL_DB.";charset=utf8", 
+        MYSQL_USER, MYSQL_PASS);
+        $this->deploy();
+    }
+
+    private function deploy() {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if(count($tables) == 0) {
+            $sql =<<<END
+
+		END;
+        $this->db->query($sql);
+        }
     }
 
     public function obtenerProductos() {
