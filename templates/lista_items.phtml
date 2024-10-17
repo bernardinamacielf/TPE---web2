@@ -1,5 +1,5 @@
 
-<h1>Productos de la Categoría</h1>
+<h1>Productos de la Categoría <?= htmlspecialchars($nombre_categoria) ?></h1>
 <ul class="list-group">
     <?php foreach ($productos as $producto) { ?>  
         <li class="list-group-item">

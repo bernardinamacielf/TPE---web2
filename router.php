@@ -6,8 +6,6 @@ require_once 'app/middlewares/verificacion.autenticacion.middleware.php';
 require_once 'app/controladores/categorias.controlador.php';
 require_once 'app/controladores/productos.controlador.php';
 require_once 'app/controladores/autenticacion.controlador.php';
-require_once 'app/controladores/admin.categoria.controlador.php';
-require_once 'app/controladores/admin.producto.controlador.php';
 require_once 'app/controladores/home.controlador.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -63,52 +61,53 @@ switch ($params[0]) {
     case 'admin_producto':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminProductoControlador($res);
+        $controlador = new productosControlador($res);
         $controlador->mostrarProductos();  
         break;
     case 'agregar_producto':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminProductoControlador($res);
+        $controlador = new productosControlador($res);
         $controlador->agregarProducto();
         break;
     case 'eliminar_producto':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminProductoControlador($res);
+        $controlador = new productosControlador($res);
         $controlador->eliminarProducto($params[1]);
         break;
     case 'editar_producto':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminProductoControlador($res);
+        $controlador = new productosControlador($res);
         $controlador->editarProducto($params[1]);
         break;
     case 'admin_categoria':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminControlador($res);
+        $controlador = new categoriasControlador(true, $res->usuario);
         $controlador->mostrarCategorias();  
         break;
     case 'agregar_categoria':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminControlador($res);
+        $controlador = new categoriasControlador(true, $res->usuario);
         $controlador->agregarCategoria();
         break;
     case 'eliminar_categoria':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminControlador($res);
+        $controlador = new categoriasControlador(true, $res->usuario);
         $controlador->eliminarCategoria($params[1]);
         break;
     case 'editar_categoria':
         sesionAutenticacionMiddleware($res);
         verificacionAutenticacionMiddleware($res);
-        $controlador = new adminControlador($res);
+        $controlador = new categoriasControlador(true, $res->usuario);
         $controlador->editarCategoria($params[1]);
         break;
     default: 
-        echo "404 Page Not Found";
+        $controlador = new productosControlador();
+        $controlador->default();
         break;
 }

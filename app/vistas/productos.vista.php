@@ -1,20 +1,26 @@
 <?php 
 
 class productosVista {
-    public function listarProductos($productos) {
-        $usuario = null;
+    private $usuario;
+
+    public function __construct($usuario = null) {
+        $this->usuario = $usuario;
+    }
+
+    public function listarProductos($productos, $categorias = null) {
+        $usuario = $this->usuario;
         require_once 'templates/layout/header.phtml';
         require_once 'templates/lista_productos.phtml';
     }
 
     public function mostrarDetalle($producto) {
-        $usuario = null;
+        $usuario = $this->usuario;
         require_once 'templates/layout/header.phtml';
         require_once 'templates/producto_detalle.phtml';
     }
 
     public function alertaError($error) {
-        $usuario = null;
+        $usuario = $this->usuario;
         require_once 'templates/layout/header.phtml';
         require_once 'templates/error.phtml';
     }
