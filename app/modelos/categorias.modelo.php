@@ -41,6 +41,7 @@ class categoriasModelo {
     }
 
     //para que siempre se vea el nombre de la categoría a la que pertenecen los productos
+
     public function obtenerIdCategoria($ID_categoria) {
         $query = $this->db->prepare('SELECT * FROM categorias WHERE ID_categoria = ?');
         $query->execute([$ID_categoria]);
@@ -51,9 +52,9 @@ class categoriasModelo {
 
     //funcionalidad para el administrador
     
-    public function insertarCategoria($nombre_categoria, $suspendida = false) {
-        $query = $this->db->prepare('INSERT INTO categorias(nombre_categoria, suspendida) VALUES (?, ?)');
-        $query->execute([$nombre_categoria, $suspendida]);
+    public function insertarCategoria($nombre_categoria, $imagen_url, $suspendida = false) {
+        $query = $this->db->prepare('INSERT INTO categorias(nombre_categoria, imagen_url, suspendida) VALUES (?, ?, ?)');
+        $query->execute([$nombre_categoria, $imagen_url, $suspendida]);
 
         $ID_categoria = $this->db->lastInsertId();
         return $ID_categoria;

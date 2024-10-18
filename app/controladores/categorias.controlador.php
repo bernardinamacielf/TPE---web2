@@ -7,9 +7,9 @@ class categoriasControlador {
     private $modelo;
     private $vista;
 
-    public function __construct($esAdmin = false, $usuario = null) {
+    public function __construct($res = null) {
         $this->modelo = new categoriasModelo();
-        $this->vista = new categoriasVista($esAdmin, $usuario);
+        $this->vista = new categoriasVista($res ? $res->usuario : null);
     }
 
     public function mostrarCategorias() {
@@ -31,9 +31,14 @@ class categoriasControlador {
             return $this->vista->mostrarError('Es necesario ingresar una categoria');
         }
 
-        $nombre_categoria = $_POST['nombre_categoria'];
+        if(!isset($_POST['imagen_url']) || empty($_POST['imagen_url'])) {
+            return $this->vista->mostrarError('Agregue una foto de la categoría a la que pertenecen los productos');
+        }
 
-        $ID_categoria = $this->modelo->insertarCategoria($nombre_categoria);
+        $nombre_categoria = $_POST['nombre_categoria'];
+        $imagen_url = $_POST['imagen_url'] ?? null;
+
+        $ID_categoria = $this->modelo->insertarCategoria($nombre_categoria, $imagen_url);
         header('Location: ' . BASE_URL . 'admin_categoria');
     }
 

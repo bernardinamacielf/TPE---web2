@@ -1,11 +1,9 @@
 <?php
 
 class categoriasVista {
-  private $esAdmin;
   private $usuario;
 
-  public function __construct($esAdmin = false, $usuario = null) {
-    $this->esAdmin = $esAdmin;
+  public function __construct($usuario = null) {
     $this->usuario = $usuario;
   }
 

@@ -1,6 +1,6 @@
 <h1>Lista de Categorías</h1>
 
-<?php if ($this->esAdmin): ?>
+<?php if ($usuario): ?>
     <?php require 'templates/formulario_agregar_categoria.phtml'; ?>
 <?php endif; ?>
 
@@ -10,7 +10,10 @@
             <div class="label">
                 <b><?= htmlspecialchars($categoria->nombre_categoria) ?></b> | <a href="mostrar_item/<?= $categoria->ID_categoria ?>">Ver Productos</a>
             </div>
-            <?php if ($this->esAdmin): ?>
+            <?php if ($categoria->imagen_url): ?>
+                <img src="<?= htmlspecialchars($categoria->imagen_url) ?>" class="img-thumbnail" style="max-width: 150px;">
+            <?php endif ?>
+            <?php if ($usuario): ?>
                 <div class="actions">
                     <?php if (!$categoria->suspendida): ?>
                         <a href="editar_categoria/<?= $categoria->ID_categoria ?>" type="button" class='btn btn-success btn-sm ml-auto'>Suspender</a>
